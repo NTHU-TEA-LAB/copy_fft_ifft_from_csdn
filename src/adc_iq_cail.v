@@ -48,15 +48,15 @@ module adc_iq_cail#(
 	localparam FIFO_READ        = 'd2;
 	localparam FIFO_READ_DONE   = 'd3;
 
-		always@(posedge clk_300m or negedge locked)begin
-			if(locked == 1'b0)begin
-				locrstn_buf <= 1'b0;
-				locrstn     <= 1'b0;
-			end else begin
-				locrstn_buf	<= 1'b1;
-				locrstn	    <= locrstn_buf;
-			end
+	always@(posedge clk_300m or negedge locked)begin
+		if(locked == 1'b0)begin
+			locrstn_buf <= 1'b0;
+			locrstn     <= 1'b0;
+		end else begin
+			locrstn_buf	<= 1'b1;
+			locrstn	    <= locrstn_buf;
 		end
+	end
 
 	//=================================================================================/
 	// 生成仿真数据
@@ -154,7 +154,7 @@ module adc_iq_cail#(
 
 	cail_fft_ifft #(.BIT_NUM(BIT_NUM)) u_cail_fft_ifft (
 		.SYS_CLK        (clk_300m       ), // (input ) (input )
-		.SYS_RSTN       (locrstn        ), // (input ) (input )
+		.SYS_RSTN       (SYS_RSTN       ), // (input ) (input )
 		.fft_data_tdata (fft_data_tdata ), // (input ) (input )
 		.fft_tvalid_path(fft_tvalid_path), // (input ) (input )
 		.fft_tlast_path (fft_tlast_path ), // (input ) (input )

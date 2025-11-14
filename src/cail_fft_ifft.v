@@ -167,34 +167,34 @@ module cail_fft_ifft#(
 	end
 	//生成FFT的IP模块
 	fft_cail	u_fft_cail (
-		.aclk                       ( SYS_CLK               ), // input wire aclk
-		.aresetn                    ( fft_rst               ), // input wire aresetn
-	    // .s_axis_config_tdata        ( fft_config_dat        ), // input wire [15 : 0] s_axis_config_tdata
-		.s_axis_config_tdata        ( 8'd1                  ), // input wire [15 : 0] s_axis_config_tdata
-		.s_axis_config_tvalid       ( fft_config_tvalid     ), // input wire s_axis_config_tvalid
-		.s_axis_config_tready       ( fft_config_tdy_path   ), // output wire s_axis_config_tready
+		.aclk                       (SYS_CLK               ), // input wire aclk
+		.aresetn                    (fft_rst               ), // input wire aresetn
+	    // .s_axis_config_tdata        (fft_config_dat        ), // input wire [15 : 0] s_axis_config_tdata
+		.s_axis_config_tdata        (8'd1                  ), // input wire [15 : 0] s_axis_config_tdata
+		.s_axis_config_tvalid       (fft_config_tvalid     ), // input wire s_axis_config_tvalid
+		.s_axis_config_tready       (fft_config_tdy_path   ), // output wire s_axis_config_tready
 
-		.s_axis_data_tdata          ( fft_data_tdata        ), // input wire [47 : 0] s_axis_data_tdata
-		.s_axis_data_tvalid         ( fft_tvalid_path       ), // input wire s_axis_data_tvalid
-		.s_axis_data_tready         ( fft_tready_path       ), // output wire s_axis_data_tready
-		.s_axis_data_tlast          ( fft_tlast_path        ), // input wire s_axis_data_tlast
+		.s_axis_data_tdata          (fft_data_tdata        ), // input wire [47 : 0] s_axis_data_tdata
+		.s_axis_data_tvalid         (fft_tvalid_path       ), // input wire s_axis_data_tvalid
+		.s_axis_data_tready         (fft_tready_path       ), // output wire s_axis_data_tready
+		.s_axis_data_tlast          (fft_tlast_path        ), // input wire s_axis_data_tlast
 
-		.m_axis_data_tdata          ( fft_m_axis_data_tdata ), // output wire [47 : 0] m_axis_data_tdata
-		.m_axis_data_tuser          (                       ), // output wire [7 : 0] m_axis_data_tuser
-		// .m_axis_data_tready         ( 1'b1                  ), //取数延时，使最后一级fifo能够无损传输数据给ps// input wire m_axis_data_tready
-		.m_axis_data_tready         ( ifftdat_vlid          ), //取数延时，使最后一级fifo能够无损传输数据给ps// input wire m_axis_data_tready
-		.m_axis_data_tvalid         ( fft_m_axis_data_tvalid), // output wire m_axis_data_tvalid
-		.m_axis_data_tlast          ( fft_m_axis_data_tlast ), // output wire m_axis_data_tlast
-		.m_axis_status_tdata        (                       ), // output wire [7 : 0] m_axis_status_tdata
-		.m_axis_status_tvalid       (                       ), // output wire m_axis_status_tvalid
-		.m_axis_status_tready       ( 1'b1                  ), // input wire m_axis_status_tready
+		.m_axis_data_tdata          (fft_m_axis_data_tdata ), // output wire [47 : 0] m_axis_data_tdata
+		.m_axis_data_tuser          (                      ), // output wire [7 : 0] m_axis_data_tuser
+		// .m_axis_data_tready         (1'b1                  ), //取数延时，使最后一级fifo能够无损传输数据给ps// input wire m_axis_data_tready
+		.m_axis_data_tready         (ifftdat_vlid          ), //取数延时，使最后一级fifo能够无损传输数据给ps// input wire m_axis_data_tready
+		.m_axis_data_tvalid         (fft_m_axis_data_tvalid), // output wire m_axis_data_tvalid
+		.m_axis_data_tlast          (fft_m_axis_data_tlast ), // output wire m_axis_data_tlast
+		.m_axis_status_tdata        (                      ), // output wire [7 : 0] m_axis_status_tdata
+		.m_axis_status_tvalid       (                      ), // output wire m_axis_status_tvalid
+		.m_axis_status_tready       (1'b1                  ), // input wire m_axis_status_tready
 
-		.event_frame_started        (                       ), // output wire event_frame_started
-		.event_tlast_unexpected     (                       ), // output wire event_tlast_unexpected
-		.event_tlast_missing        (                       ), // output wire event_tlast_missing
-		.event_data_in_channel_halt (                       ), // output wire event_data_in_channel_halt
-		.event_status_channel_halt  (                       ), // output wire event_status_channel_halt
-		.event_data_out_channel_halt(                       )  // output wire event_data_out_channel_halt
+		.event_frame_started        (                      ), // output wire event_frame_started
+		.event_tlast_unexpected     (                      ), // output wire event_tlast_unexpected
+		.event_tlast_missing        (                      ), // output wire event_tlast_missing
+		.event_data_in_channel_halt (                      ), // output wire event_data_in_channel_halt
+		.event_status_channel_halt  (                      ), // output wire event_status_channel_halt
+		.event_data_out_channel_halt(                      )  // output wire event_data_out_channel_halt
 	);
 
 	always@(posedge	SYS_CLK or negedge rstn)
