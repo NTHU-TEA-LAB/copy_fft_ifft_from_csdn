@@ -11,9 +11,9 @@ ADC -> ASYN_FIFO -> FFT -> IFFT -> SYN_FIFO
 ## Copy File
 
 ```text
-copy_fft_ifft/adc_iq_cail.v
-copy_fft_ifft/cail_fft_ifft.v
-copy_fft_ifft/cail_testbench.v
+src/adc_iq_cail.v
+src/cail_fft_ifft.v
+src/cail_testbench.v
 ```
 
 這三個檔案分別代表的功能是:

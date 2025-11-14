@@ -35,7 +35,7 @@ module adc_iq_cail#(
 	wire [47:0] fft_data_tdata;
 	wire        fft_tvalid_path;
 	wire        fft_tready_path;
-	wire 	      m_axis_data_tvalid;
+	wire 	    m_axis_data_tvalid;
 	wire [47:0] m_dds_tdata;
 	//=================================================================================/
 	// 状态机
@@ -51,10 +51,10 @@ module adc_iq_cail#(
 		always@(posedge clk_300m or negedge locked)begin
 			if(locked == 1'b0)begin
 				locrstn_buf <= 1'b0;
-				locrstn			<= 1'b0;
+				locrstn     <= 1'b0;
 			end else begin
 				locrstn_buf	<= 1'b1;
-				locrstn			<= locrstn_buf;
+				locrstn	    <= locrstn_buf;
 			end
 		end
 
@@ -134,11 +134,11 @@ module adc_iq_cail#(
 	//=================================================================================/
 	always@(posedge clk_300m or negedge locrstn) begin
 		if(locrstn==1'b0) begin
-			tlast_cnt<='d0;
+			tlast_cnt <= 'd0;
 		end else if((tlast_cnt==FFT_LEN-1)&&(fifo_valid==1'b1)||(fifo_read_state != FIFO_READ)) begin
-			tlast_cnt<='d0;
+			tlast_cnt <= 'd0;
 		end else if(fifo_valid==1'b1) begin
-			tlast_cnt<=tlast_cnt+1'b1;
+			tlast_cnt <= tlast_cnt+1'b1;
 		end
 	end
 
@@ -159,9 +159,9 @@ module adc_iq_cail#(
 		.fft_tvalid_path(fft_tvalid_path), // (input ) (input )
 		.fft_tlast_path (fft_tlast_path ), // (input ) (input )
 		.fft_tready_path(fft_tready_path), // (output) (output)
-		.I_DATA_OUT     (				        ), // (output) (output)
-		.Q_DATA_OUT     (				        ), // (output) (output)
-		.DATA_OUT_VALID (				        )  // (output) (output)
+		.I_DATA_OUT     (				), // (output) (output)
+		.Q_DATA_OUT     (				), // (output) (output)
+		.DATA_OUT_VALID (				)  // (output) (output)
 	);
 
 endmodule
