@@ -21,6 +21,7 @@ src/cail_testbench.v
 - adc_iq_cail.v: ADC和ASYN_FIFO的頂層交互介面
 - cail_fft_ifft.v: FFT和IFFT的頂層交互介面
 - cail_testbench.v: 測試程式碼，用於模擬ADC和ASYN_FIFO的輸入，以及FFT和IFFT的輸出
+  - 這邊會使用dds_compiler 來產生sin cos的訊號(100MHz)，asyn fifo接收100MHz之後，會以300MHz的方式給cail_fft_ifft
 
 ## Website
 
