@@ -51,13 +51,13 @@ module cail_testbench;
  
 	globaclk_clk300m u_globaclk_clk300m(
 	// Clock out ports
-		.clk_300m_g                       (clk_300m                                 ), // output clk_300_g
-		.clk_100m_g                       (clk_100m                                 ), // output clk_100_g
+		.clk_300m_g(clk_300m), // output clk_300_g
+		.clk_100m_g(clk_100m), // output clk_100_g
 	// Status and control signals
-		.reset                            (1'b0                                       ), // input reset
-		.locked                           (locked                                     ), // output locked
+		.reset     (1'b0    ), // input reset
+		.locked    (locked  ), // output locked
 	// Clock in ports
-		.global_clk                       (clk                                        )  // input global_clk
+		.global_clk(clk     )  // input global_clk
 	);
 
 	reg [47:0] m_dds_tdata_r;
