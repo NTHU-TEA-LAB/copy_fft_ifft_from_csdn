@@ -48,6 +48,26 @@ module adc_iq_cail#(
 	localparam FIFO_READ        = 'd2;
 	localparam FIFO_READ_DONE   = 'd3;
 
+	//=================================================================================/
+	// not original code
+	//=================================================================================/
+	wire clk_300m;
+	wire clk_100m;
+	wire locked;
+	
+	globalclk_clk300m u_globalclk_clk300m(
+	// Clock out ports
+		.clk_300m_g(clk_300m ), // output clk_300_g
+		.clk_100m_g(clk_100m ), // output clk_100_g
+	// Status and control signals
+		.reset     (!SYS_RSTN), // input reset
+		.locked    (locked   ), // output locked
+	// Clock in ports
+		.global_clk(SYS_CLK  )  // input global_clk
+	);
+	//=================================================================================/
+	
+
 	always@(posedge clk_300m or negedge locked)begin
 		if(locked == 1'b0)begin
 			locrstn_buf <= 1'b0;
@@ -154,7 +174,7 @@ module adc_iq_cail#(
 
 	cail_fft_ifft #(.BIT_NUM(BIT_NUM)) u_cail_fft_ifft (
 		.SYS_CLK        (clk_300m       ), // (input ) (input )
-		.SYS_RSTN       (SYS_RSTN       ), // (input ) (input )
+		.SYS_RSTN       (locrstn        ), // (input ) (input )
 		.fft_data_tdata (fft_data_tdata ), // (input ) (input )
 		.fft_tvalid_path(fft_tvalid_path), // (input ) (input )
 		.fft_tlast_path (fft_tlast_path ), // (input ) (input )

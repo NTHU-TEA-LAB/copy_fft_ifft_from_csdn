@@ -49,7 +49,7 @@ module cail_testbench;
 // 	);
 	
  
-	globaclk_clk300m u_globaclk_clk300m(
+	globalclk_clk300m u_globalclk_clk300m(
 	// Clock out ports
 		.clk_300m_g(clk_300m), // output clk_300_g
 		.clk_100m_g(clk_100m), // output clk_100_g
