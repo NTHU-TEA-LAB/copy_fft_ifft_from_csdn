@@ -26,3 +26,6 @@ src/cail_testbench.v
 ## Website
 
 [CSDN 作者文章連結](https://blog.csdn.net/2301_80127702/article/details/149437989)
+
+## Result
+- 20251121 目前有將整段程式碼完成復刻，測試結果會覺得作者寫得很奇怪，testbench也動不起來，所以可能還需要重構頂層模組。
